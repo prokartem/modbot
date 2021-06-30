@@ -1,0 +1,42 @@
+[0m[[0m[0mdebug[0m] [0m[0mExecuting Native docker build --force-rm -t modbot-pr:0.1 .[0m
+[0m[[0m[0mdebug[0m] [0m[0mWorking directory /home/ub/modbot/target/docker/stage[0m
+[0m[[0m[0minfo[0m] [0m[0mSending build context to Docker daemon  44.01MB[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 1/7 : FROM openjdk:latest[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> de085dce79ff[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 2/7 : WORKDIR /opt/docker[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Using cache[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> eef97450c187[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 3/7 : ADD --chown=daemon:daemon opt /opt[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Using cache[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 9778f6317951[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 4/7 : USER daemon[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Using cache[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 8804aadeda2c[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 5/7 : ENTRYPOINT ["/opt/docker/bin/modbot-pr"][0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Using cache[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> f645b6876884[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 6/7 : CMD [][0m
+[0m[[0m[0minfo[0m] [0m[0m ---> Using cache[0m
+[0m[[0m[0minfo[0m] [0m[0m ---> 2e19e8dfd95a[0m
+[0m[[0m[0minfo[0m] [0m[0mStep 7/7 : COPY src/main/resources /opt/src/main/recources[0m
+[0m[[0m[31merror[0m] [0m[0mCOPY failed: file not found in build context or excluded by .dockerignore: stat src/main/resources: file does not exist[0m
+[0m[[0m[31merror[0m] [0m[0mjava.lang.RuntimeException: Nonzero exit value: 1[0m
+[0m[[0m[31merror[0m] [0m[0m	at com.typesafe.sbt.packager.docker.DockerPlugin$.publishLocalDocker(DockerPlugin.scala:351)[0m
+[0m[[0m[31merror[0m] [0m[0m	at com.typesafe.sbt.packager.docker.DockerPlugin$.$anonfun$projectSettings$30(DockerPlugin.scala:126)[0m
+[0m[[0m[31merror[0m] [0m[0m	at com.typesafe.sbt.packager.docker.DockerPlugin$.$anonfun$projectSettings$30$adapted(DockerPlugin.scala:124)[0m
+[0m[[0m[31merror[0m] [0m[0m	at scala.Function1.$anonfun$compose$1(Function1.scala:49)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.util.$tilde$greater.$anonfun$$u2219$1(TypeFunctions.scala:62)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.std.Transform$$anon$4.work(Transform.scala:68)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Execute.$anonfun$submit$2(Execute.scala:282)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.internal.util.ErrorHandling$.wideConvert(ErrorHandling.scala:23)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Execute.work(Execute.scala:291)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.Execute.$anonfun$submit$1(Execute.scala:282)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.ConcurrentRestrictions$$anon$4.$anonfun$submitValid$1(ConcurrentRestrictions.scala:265)[0m
+[0m[[0m[31merror[0m] [0m[0m	at sbt.CompletionService$$anon$2.call(CompletionService.scala:64)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/java.lang.Thread.run(Thread.java:829)[0m
+[0m[[0m[31merror[0m] [0m[0m(Docker / [31mpublishLocal[0m) Nonzero exit value: 1[0m

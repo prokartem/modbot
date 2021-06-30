@@ -1,0 +1,125 @@
+{
+  "ok": true,
+  "result": [
+    {
+      "update_id": 514688465,
+      "message": {
+        "message_id": 2045,
+        "from": {
+          "id": 471322687,
+          "is_bot": false,
+          "first_name": "Mehten",
+          "last_name": "Austen",
+          "username": "Mehtenausten",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": 471322687,
+          "first_name": "Mehten",
+          "last_name": "Austen",
+          "username": "Mehtenausten",
+          "type": "private"
+        },
+        "date": 1622859388,
+        "text": "/start",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 6,
+            "type": "bot_command"
+          }
+        ]
+      }
+    },
+    {
+      "update_id": 514688466,
+      "message": {
+        "message_id": 2046,
+        "from": {
+          "id": 471322687,
+          "is_bot": false,
+          "first_name": "Mehten",
+          "last_name": "Austen",
+          "username": "Mehtenausten",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": 471322687,
+          "first_name": "Mehten",
+          "last_name": "Austen",
+          "username": "Mehtenausten",
+          "type": "private"
+        },
+        "date": 1622859392,
+        "text": "Ghbdtn]"
+      }
+    },
+    {
+      "update_id": 514688467,
+      "message": {
+        "message_id": 2047,
+        "from": {
+          "id": 471322687,
+          "is_bot": false,
+          "first_name": "Mehten",
+          "last_name": "Austen",
+          "username": "Mehtenausten",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": 471322687,
+          "first_name": "Mehten",
+          "last_name": "Austen",
+          "username": "Mehtenausten",
+          "type": "private"
+        },
+        "date": 1622859484,
+        "sticker": {
+          "width": 512,
+          "height": 512,
+          "emoji": "😍",
+          "set_name": "SewayakiKitsuneNoSenko",
+          "is_animated": false,
+          "thumb": {
+            "file_id": "AAMCAgADGQEAAgf_YLre3DqnHr54k9MwF6YN-BXMJuEAAjUBAAK3e-sgP0-DJmd1FuzEkFMPAAQBAAdtAAPmRAACHwQ",
+            "file_unique_id": "AQADxJBTDwAE5kQAAg",
+            "file_size": 19420,
+            "width": 320,
+            "height": 320
+          },
+          "file_id": "CAACAgIAAxkBAAIH_2C63tw6px6-eJPTMBemDfgVzCbhAAI1AQACt3vrID9PgyZndRbsHwQ",
+          "file_unique_id": "AgADNQEAArd76yA",
+          "file_size": 36526
+        }
+      }
+    },
+    {
+      "update_id": 514688468,
+      "message": {
+        "message_id": 417,
+        "from": {
+          "id": 471322687,
+          "is_bot": false,
+          "first_name": "Mehten",
+          "last_name": "Austen",
+          "username": "Mehtenausten",
+          "language_code": "en"
+        },
+        "chat": {
+          "id": -1001445501032,
+          "title": "Test",
+          "type": "supergroup"
+        },
+        "date": 1622859731,
+        "text": "/o",
+        "entities": [
+          {
+            "offset": 0,
+            "length": 2,
+            "type": "bot_command"
+          }
+        ]
+      }
+    }
+  ]
+}
