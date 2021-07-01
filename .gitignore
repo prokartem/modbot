@@ -6,9 +6,6 @@
 *.log
 
 # End of https://www.toptal.com/developers/gitignore/api/scala
-
-/List-of-Dirty-Naughty-Obscene-and-Otherwise-Bad-Words/
-/naughty-words-js/
 architecture.png
 architecture.txt
 usage_scripts.txt
