@@ -6,7 +6,10 @@
 *.log
 
 # End of https://www.toptal.com/developers/gitignore/api/scala
-target
+project/project/
+project/target/
+target/
+
 architecture.png
 architecture.txt
 usage_scripts.txt
