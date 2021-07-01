@@ -1,14 +1,22 @@
-# Created by https://www.toptal.com/developers/gitignore/api/scala
-# Edit at https://www.toptal.com/developers/gitignore?templates=scala
-
 ### Scala ###
 *.class
 *.log
 
-# End of https://www.toptal.com/developers/gitignore/api/scala
-project/project/
-project/target/
+# sbt specific
+.cache/
+.history/
+.lib/
+dist/*
 target/
+lib_managed/
+src_managed/
+project/boot/
+project/plugins/project/
+
+# Scala-IDE specific
+.scala_dependencies
+.worksheet
+.idea
 
 architecture.png
 architecture.txt
