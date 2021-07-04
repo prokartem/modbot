@@ -1,8 +1,6 @@
 package modbot
 
 import cats.effect.ConcurrentEffect
-import cats.effect.concurrent.Ref
-import cats.implicits._
 import com.typesafe.scalalogging.Logger
 import io.circe.literal._
 import modbot.Models.Msg
@@ -14,41 +12,22 @@ import org.slf4j.LoggerFactory
 
 class TelegramAPI[F[_]: ConcurrentEffect] {
   assert(config.token.nonEmpty, "Bot token is empty")
+  assert(config.botName.nonEmpty, "Bot name is empty")
   private val baseUri             = uri"https://api.telegram.org"
   private val baseUriWithBotToken = baseUri / s"bot${config.token}"
   private val logger              = Logger(LoggerFactory.getLogger(this.getClass))
 
-  final def getUpdates(nextUpdateId: Int = 0): Request[F] = {
+  final def getUpdates(nextUpdateId: Long = 0): Request[F] = {
     val body =
       json"""
           {
           "offset": $nextUpdateId,
-          "timeout": 1,
+          "timeout": ${config.longPollingTimeout},
           "allowed_updates": ["message"]
           }"""
     Request[F](method = Method.GET, uri = baseUriWithBotToken / "getUpdates")
       .withEntity(body)
   }
-
-  final def getUpdatesWithVariable(nextUpdateId: Ref[F, Long]): F[Request[F]] =
-    for {
-      updId <- nextUpdateId.get
-      _ <- logger
-        .info(s"This is current update_id: $updId")
-        .pure[F]
-      body <- json"""
-          {
-          "offset": $updId,
-          "timeout": 60,
-          "allowed_updates": ["message"]
-          }""".pure[F]
-      res <- Request[F](
-        method = Method.GET,
-        uri = baseUriWithBotToken / "getUpdates",
-      )
-        .withEntity(body)
-        .pure[F]
-    } yield res
 
   final def banChatMember(msg: Msg): Request[F] = {
     val body =
@@ -81,7 +60,6 @@ class TelegramAPI[F[_]: ConcurrentEffect] {
 
   final def deleteMessage(msg: Msg): Request[F] = {
     val body =
-      //    ${msg.chat.id}471322687
       json"""
           {
           "chat_id": ${msg.chat.id},

@@ -19,7 +19,7 @@ import scala.concurrent.duration.{DurationInt, FiniteDuration}
 class Requester[F[_]: ConcurrentEffect: ContextShift: Timer](
     val client: Client[F],
     val refUpdateId: Ref[F, Long],
-    val requestF: F[Request[F]],
+    val request: Long => Request[F],
     val duration: FiniteDuration,
 ) {
   private val logger = Logger(LoggerFactory.getLogger(this.getClass))
@@ -27,24 +27,24 @@ class Requester[F[_]: ConcurrentEffect: ContextShift: Timer](
   private def copy(
       client: Client[F] = client,
       refUpdateId: Ref[F, Long] = refUpdateId,
-      requestF: F[Request[F]] = requestF,
+      request: Long => Request[F] = request,
       duration: FiniteDuration = duration,
   ) =
     new Requester[F](
       client = client,
       refUpdateId = refUpdateId,
-      requestF = requestF,
+      request = request,
       duration = duration,
     ) {}
 
-  def withRequestF(req: F[Request[F]]): Requester[F]  = copy(requestF = req)
-  def withDuration(dur: FiniteDuration): Requester[F] = copy(duration = dur)
+  def withRequestF(req: Long => Request[F]): Requester[F] = copy(request = req)
+  def withDuration(dur: FiniteDuration): Requester[F]     = copy(duration = dur)
 
   private def requestLogic =
     for {
-      req <- requestF
-      _ = logger.info("Sending request...")
-      json         <- client.expect[Json](req)
+      currentUpdateId <- refUpdateId.get
+      _ = logger.info(s"Sending request... with update_id = $currentUpdateId")
+      json         <- client.expect[Json](request(currentUpdateId))
       updatesMaybe <- json.as[Stream[Pure, Update]].pure[F]
       res <- updatesMaybe match {
         case Left(error) =>
@@ -82,7 +82,7 @@ object Requester {
     new Requester[F](
       client = client,
       refUpdateId = refUpdateId,
-      requestF = new TelegramAPI[F].getUpdates().pure[F],
+      request = new TelegramAPI[F].getUpdates,
       duration = 5.seconds,
     )
 }

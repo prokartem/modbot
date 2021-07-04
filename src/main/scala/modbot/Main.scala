@@ -30,7 +30,7 @@ object Main extends IOApp {
           updatesTopic <- Topic[IO, Option[Update]](None)
 
           requester = Requester(client, updateId)
-            .withRequestF(telegram.getUpdatesWithVariable(updateId))
+            .withRequestF(telegram.getUpdates)
             .withDuration(500.milliseconds)
             .run
             .through(updatesTopic.publish)
