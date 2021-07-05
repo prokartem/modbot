@@ -1,5 +1,5 @@
 # modbot
-Purely functional Telegram bot for cleaning groups from dirty, naughty, obscene and otherwise bad words.
+Purely functional Telegram bot for cleaning groups from dirty, naughty, obscene and otherwise bad language.
 
 Criteria: default wordlist that you can find 
 in [`src/main/resources/<language>.conf`](https://github.com/prokartem/modbot/tree/public/src/main/resources)
